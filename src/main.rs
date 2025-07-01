@@ -1,12 +1,11 @@
-use std::path::Path;
+use std::env;
 use std::fs;
 
 
 fn main() {
-    let rna_path_str = "~/Documents"; // replace with
-                                                                                   // clap stuff
-    let rna_path = Path::new(rna_path_str);
-    let paths = fs::read_dir(rna_path)
+    let path = env::current_dir()
+        .unwrap();
+    let paths = fs::read_dir(path)
         .unwrap();
 
     for path in paths {
@@ -19,5 +18,5 @@ fn main() {
 
          println!("{}", filepath_str);
 
-    }
+   }
 }
